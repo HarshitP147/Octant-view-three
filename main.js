@@ -3,9 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 import camera from './camera'
 
-import xAxis from './axes/axisX'
-import yAxis from './axes/axisY'
-import zAxis from './axes/axisZ'
+import Line from './lines';
 
 function main(){
 
@@ -16,9 +14,13 @@ function main(){
 
 	const scene = new Three.Scene();
 
-	scene.add(xAxis);
-	scene.add(yAxis);
-	scene.add(zAxis);
+	const xAxis = new Line('x',0,1);
+	scene.add(xAxis.getLine());
+
+	//const yAxis = new Line('y',0,1);
+	//scene.add(yAxis.getLine());
+	const zAxis = new Line('z',0,1);
+	scene.add(zAxis.getLine());
 
 	const controls = new OrbitControls(camera,renderer.domElement);
 
